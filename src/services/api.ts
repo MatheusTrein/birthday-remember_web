@@ -57,7 +57,7 @@ export const setupAPIClient = (context?: GetServerSidePropsContext) => {
       if (error.response?.status === 401) {
         if (error.response.data?.type === "token.expired") {
           if (!isRefreshing) {
-            console.log("Refreshing");
+            console.log("Refreshing Token");
             isRefreshing = true;
             api
               .post("/sessions/refresh", {
