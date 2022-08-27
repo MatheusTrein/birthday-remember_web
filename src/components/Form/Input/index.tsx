@@ -14,7 +14,7 @@ const Input: React.FC<InputProps> = ({
   label,
   validated,
   error,
-  mask,
+  mask = undefined,
   ...rest
 }) => {
   return (
