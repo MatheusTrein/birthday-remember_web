@@ -182,7 +182,7 @@ const Birthdays: NextPage<BirthdaysProps> = ({
           data: {
             alarmTime: updatedBirthday.alarmTime,
             birthDate: parseStringToDate(updatedBirthday.birthDate),
-            name: updateBirthday.name,
+            name: updatedBirthday.name,
           },
         });
 
