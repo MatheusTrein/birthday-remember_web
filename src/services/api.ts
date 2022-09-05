@@ -106,10 +106,16 @@ export const setupAPIClient = (context?: GetServerSidePropsContext) => {
                 );
                 failedRequestsQueue = [];
 
-                if (typeof window === "undefined") {
-                  throw new AuthTokenError();
-                } else {
-                  singOut();
+                if (
+                  error.response.data?.type === "token.invalid" ||
+                  error.response.data?.type === "refreshToken.invalid" ||
+                  error.response.data?.type === "refreshToken.expired"
+                ) {
+                  if (typeof window === "undefined") {
+                    throw new AuthTokenError();
+                  } else {
+                    singOut();
+                  }
                 }
               })
               .finally(() => {
@@ -132,7 +138,11 @@ export const setupAPIClient = (context?: GetServerSidePropsContext) => {
               });
             }
           });
-        } else {
+        } else if (
+          error.response.data?.type === "token.invalid" ||
+          error.response.data?.type === "refreshToken.invalid" ||
+          error.response.data?.type === "refreshToken.expired"
+        ) {
           if (typeof window === "undefined") {
             throw new AuthTokenError();
           } else {

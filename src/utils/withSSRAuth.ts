@@ -6,7 +6,7 @@ import {
 import nookies from "nookies";
 import { AuthTokenError } from "../errors/AuthTokenError";
 
-export const withSSRAuth = <P>(fn: GetServerSideProps<P>) => {
+export const withSSRAuth = <P>(fn: GetServerSideProps<any>) => {
   return async (
     context: GetServerSidePropsContext
   ): Promise<GetServerSidePropsResult<P>> => {
