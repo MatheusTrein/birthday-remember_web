@@ -227,7 +227,7 @@ const Birthdays: NextPage<BirthdaysProps> = ({
         toast("Erro ao remover aniversário.", { type: "error" });
       }
     },
-    [birthdays.length, currentPage, registerPerPage, request, totalCount]
+    [birthdays, currentPage, registerPerPage, request, totalCount]
   );
 
   return (
