@@ -59,6 +59,9 @@ export const setupAPIClient = (context?: GetServerSidePropsContext) => {
           if (!isRefreshing) {
             console.log("Refreshing Token");
             isRefreshing = true;
+            refreshToken = contextCookies
+              ? (contextCookies["birthdayremember.refreshToken"] as string)
+              : (cookies["birthdayremember.refreshToken"] as string);
             api
               .post("/sessions/refresh", {
                 refreshToken,
